@@ -1,6 +1,8 @@
 @page "/courses/{level}"
 
-<div class="h-full flex flex-col gap-20">
+@inject IService service
+
+<div class="h-full flex flex-col gap-10">
   <div class="text-center">
     <h1 class="text-3xl font-semibold text-zinc-300">Welcome to page with words <span
         class="uppercase text-secondary-pink font-bold">@level</span>
@@ -8,6 +10,16 @@
     <p class="text-xl text-zinc-500 mt-3">Сhoose a topic where you want to learn words</p>
   </div>
 
+  <div class="flex flex-col gap-10 items-center justify-center">
+    @foreach (var wt in WordsThemes)
+    {
+      <div>
+        <p>
+          @wt.theme
+        </p>
+      </div>
+    }
+  </div>
 </div>
 
 
@@ -15,4 +27,12 @@
 @code {
   [Parameter]
   public string level { get; set; }
+
+  private WordsTheme wordsTheme = new WordsTheme();
+  private List<WordsTheme> WordsThemes = new List<WordsTheme>();
+
+  protected override async Task OnInitializedAsync()
+  {
+    WordsThemes = service.GetWordsThemes(level);
+  }
 }

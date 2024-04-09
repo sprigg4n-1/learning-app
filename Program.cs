@@ -2,6 +2,7 @@ using blazor_app.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+ConfigureServices(builder.Services);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -25,3 +26,10 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+static void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages();
+    services.AddServerSideBlazor();
+    services.AddScoped<IService, Service>();
+}
