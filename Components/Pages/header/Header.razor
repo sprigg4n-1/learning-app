@@ -1,20 +1,23 @@
 @rendermode InteractiveServer
 
-<header class="bg-slate-300 px-10 py-4 flex justify-between items-center">
+<header class="bg-neutral-800 px-10 py-4 flex gap-10 items-center">
 
-  <h2>@actText</h2>
+  <h2 class="uppercase text-3xl font-bold">@actText</h2>
 
+  <SearchBar />
 
-  <ul class="flex gap-2">
+  <ul class="flex gap-5">
     <li>
-      <NavLink class="p-2 bg-slate-600" href="/" @onclick='() => changeActiveItem("Home")'>
+      <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/"
+        @onclick='() => changeActiveItem("Home")'>
         Home
       </NavLink>
     </li>
 
     <li>
-      <NavLink class="p-2 bg-slate-600" href="/about" @onclick='() => changeActiveItem("About")'>
-        About
+      <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/courses"
+        @onclick='() => changeActiveItem("Courses")'>
+        Courses
       </NavLink>
     </li>
   </ul>

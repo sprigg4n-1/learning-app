@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 
+:root {
+  --dark-grey: #121212;
+  --dark-purple: #1f1b24;
+  --light-purple: #332940;
+  --primary-purple: #bb86dc;
+  --primary-blue: #3700b3;
+  --primary-teal: #03dac5;
+  --secondary-teal: #018786;
+  --primary-pink: #ff7597;
+  --secondary-pink: #ff0266;
+}
+
 *,
 *::after,
 *::before {
@@ -23,4 +35,83 @@ button {
 
 ul {
   list-style: none;
+}
+
+.bg-dark-grey {
+  background-color: var(--dark-grey);
+}
+
+.text-dark-grey {
+  color: var(--dark-grey);
+}
+
+.bg-dark-purple {
+  background-color: var(--dark-purple);
+}
+
+.text-dark-purple {
+  color: var(--dark-purple);
+}
+
+.bg-dark-grey {
+  background-color: var(--dark-grey);
+}
+
+.text-dark-grey {
+  color: var(--dark-grey);
+}
+
+.bg-light-purple {
+  background-color: var(--light-purple);
+}
+
+.text-light-purple {
+  color: var(--light-purple);
+}
+
+.bg-primary-purple {
+  background-color: var(--primary-purple);
+}
+
+.text-primary-purple {
+  color: var(--primary-purple);
+}
+
+.bg-primary-blue {
+  background-color: var(--primary-blue);
+}
+
+.text-primary-blue {
+  color: var(--primary-blue);
+}
+
+.bg-primary-teal {
+  background-color: var(--primary-teal);
+}
+
+.text-primary-teal {
+  color: var(--primary-teal);
+}
+
+.bg-secondary-teal {
+  background-color: var(--secondary-teal);
+}
+
+.text-secondary-teal {
+  color: var(--secondary-teal);
+}
+
+.bg-primary-pink {
+  background-color: var(--primary-pink);
+}
+
+.text-primary-pink {
+  color: var(--primary-pink);
+}
+.bg-secondary-pink {
+  background-color: var(--secondary-pink);
+}
+
+.text-secondary-pink {
+  color: var(--secondary-pink);
 }

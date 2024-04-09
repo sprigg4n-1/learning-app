@@ -26,8 +26,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.programming/practice/learning-app/Components/Pages/About.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dC5yYXpvcg==
+[D:/.programming/practice/learning-app/Components/Pages/Courses.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.programming/practice/learning-app/Components/Pages/CourseThemes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3Vyc2VUaGVtZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.programming/practice/learning-app/Components/Pages/elements/LevelCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xlbGVtZW50c1xMZXZlbENhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.programming/practice/learning-app/Components/Pages/Error.razor]
@@ -42,8 +50,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.programming/practice/learning-app/Components/Pages/search_bar/SearchInput.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xzZWFyY2hfYmFyXFNlYXJjaElucHV0LnJhem9y
+[D:/.programming/practice/learning-app/Components/Pages/search_bar/SearchBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xzZWFyY2hfYmFyXFNlYXJjaEJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.programming/practice/learning-app/Components/Routes.razor]

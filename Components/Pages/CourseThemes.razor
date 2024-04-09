@@ -1,0 +1,18 @@
+@page "/courses/{level}"
+
+<div class="h-full flex flex-col gap-20">
+  <div class="text-center">
+    <h1 class="text-3xl font-semibold text-zinc-300">Welcome to page with words <span
+        class="uppercase text-secondary-pink font-bold">@level</span>
+      level</h1>
+    <p class="text-xl text-zinc-500 mt-3">Сhoose a topic where you want to learn words</p>
+  </div>
+
+</div>
+
+
+
+@code {
+  [Parameter]
+  public string level { get; set; }
+}

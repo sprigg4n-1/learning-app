@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "i+dmxGyJQUuUq5iVnbAbrsYGlOBr/pVTwie3WVr7nYM=",
+  "Hash": "mbddYKDHb+7vjiAs0GDemd6y8g1yeAn3+59jTM+fj/M=",
   "Source": "blazor-app",
   "BasePath": "_content/blazor-app",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "blazor-app\\wwwroot",
       "Source": "blazor-app",
-      "ContentRoot": "D:\\.programming\\practice\\blazor-app\\wwwroot\\",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
       "BasePath": "_content/blazor-app",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\.programming\\practice\\blazor-app\\wwwroot\\app.css",
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\app.css",
       "SourceId": "blazor-app",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\.programming\\practice\\blazor-app\\wwwroot\\",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
       "BasePath": "_content/blazor-app",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "D:\\.programming\\practice\\blazor-app\\wwwroot\\favicon.png",
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\favicon.png",
       "SourceId": "blazor-app",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\.programming\\practice\\blazor-app\\wwwroot\\",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
       "BasePath": "_content/blazor-app",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -53,6 +53,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\arrow-right-336-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/arrow-right-336-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\arrow-right-336-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/search-alt-2-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg"
     }
   ]
 }

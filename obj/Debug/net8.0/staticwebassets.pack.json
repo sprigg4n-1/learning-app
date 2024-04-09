@@ -1,12 +1,20 @@
 {
   "Files": [
     {
-      "Id": "D:\\.programming\\practice\\blazor-app\\wwwroot\\app.css",
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "D:\\.programming\\practice\\blazor-app\\wwwroot\\favicon.png",
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\arrow-right-336-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\arrow-right-336-svgrepo-com.svg"
+    },
+    {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\search-alt-2-svgrepo-com.svg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.blazor-app.Microsoft.AspNetCore.StaticWebAssets.props",
