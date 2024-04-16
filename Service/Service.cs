@@ -17,4 +17,10 @@ public class Service : IService
   {
     return _wordsThemes.Find(x => x.level.Equals(levelToFind.ToUpper())).ToList();
   }
+
+  public WordsTheme GetWordsThemesById(String id)
+  {
+    WordsTheme theme = _wordsThemes.Find(x => x.id == id).FirstOrDefault();
+    return theme;
+  }
 }

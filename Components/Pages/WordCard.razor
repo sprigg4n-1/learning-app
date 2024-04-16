@@ -1,0 +1,26 @@
+<div class="w-[30%] bg-light-purple py-4 px-4 flex flex-col items-center">
+  <div class="flex items-center gap-3 flex-wrap justify-center">
+    <h3 class="text-xl font-bold text-primary-pink">@word </h3>
+
+    <span class="text-xl">
+      - @translate
+    </span>
+  </div>
+  <span class="text-sm text-zinc-400 mb-5">@type</span>
+
+  <p class="text-xl text-primary-teal text-center">@sentence</p>
+</div>
+
+@code {
+  [Parameter]
+  public string word { get; set; }
+
+  [Parameter]
+  public string sentence { get; set; }
+
+  [Parameter]
+  public string translate { get; set; }
+
+  [Parameter]
+  public string type { get; set; }
+}

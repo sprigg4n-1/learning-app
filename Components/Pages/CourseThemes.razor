@@ -15,8 +15,7 @@
   <div class="flex flex-1 gap-10 items-center justify-center flex-wrap">
     @foreach (var wt in WordsThemes)
     {
-      var index = WordsThemes.IndexOf(wt);
-      var link = $"/courses/{level}/{index}";
+      var link = $"/courses/{level}/{wt.id}";
       <CourseThemeCard title="@wt.theme" link="@link" />
     }
   </div>

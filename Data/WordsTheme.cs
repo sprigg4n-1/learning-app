@@ -7,7 +7,6 @@ public class WordsTheme
   public string id { get; set; } = ObjectId.GenerateNewId().ToString();
   public string level { get; set; }
   public string theme { get; set; }
-
   public MWord[] words { get; set; }
 }
 
