@@ -1,0 +1,12 @@
+@page "/courses/{tlevel}/{ttheme}"
+
+<PageTitle>Learning app - Course @tlevel @ttheme</PageTitle>
+
+<h1>Hello to this page</h1>
+
+@code {
+  [Parameter]
+  public string tlevel { get; set; }
+  [Parameter]
+  public string ttheme { get; set; }
+}

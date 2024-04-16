@@ -1,0 +1,12 @@
+<NavLink href="@link"
+  class="bg-light-purple font-bold py-3 text-md hover:text-[#1f1b24] hover:bg-[#03dac5] duration-300 text-center w-1/4">
+  @title
+</NavLink>
+
+@code {
+  [Parameter]
+  public string title { get; set; }
+
+  [Parameter]
+  public string link { get; set; }
+}
