@@ -16,5 +16,4 @@ public class MWord
   public string translate { get; set; }
   public string type { get; set; }
   public string word { get; set; }
-
 }

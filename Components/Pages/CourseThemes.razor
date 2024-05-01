@@ -1,6 +1,5 @@
 @page "/courses/{level}"
-
-@inject IService service
+@layout MainLayout
 
 <PageTitle>Learning app - Course @level</PageTitle>
 
@@ -26,10 +25,13 @@
 @code {
   [Parameter]
   public string level { get; set; }
-  private WordsTheme wordsTheme = new WordsTheme();
+
   private List<WordsTheme> WordsThemes = new List<WordsTheme>();
+
+  public HttpClient httpClient = new HttpClient();
+
   protected override async Task OnInitializedAsync()
   {
-    WordsThemes = service.GetWordsThemes(level);
+    WordsThemes = await httpClient.GetFromJsonAsync<List<WordsTheme>>("http://localhost:5210/api/WordsTheme/" + level);
   }
 }

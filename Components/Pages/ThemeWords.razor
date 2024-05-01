@@ -1,6 +1,6 @@
 @page "/courses/{tlevel}/{tthemeid}"
+@layout MainLayout
 
-@inject IService service
 
 <PageTitle>Learning app - Theme @courseTheme</PageTitle>
 
@@ -34,15 +34,18 @@
   [Parameter]
   public string tthemeid { get; set; }
 
-  private WordsTheme wordsTheme = new WordsTheme();
+  public HttpClient httpClient = new HttpClient();
+
   private List<MWord> words = new List<MWord>();
 
   private string courseTheme { get; set; }
 
   protected override async Task OnInitializedAsync()
   {
-    wordsTheme = service.GetWordsThemesById(tthemeid);
+    WordsTheme wordsTheme = await httpClient.GetFromJsonAsync<WordsTheme>("http://localhost:5210/api/WordsTheme/" + tlevel +
+    "/" + tthemeid);
     words = wordsTheme.words.ToList();
     courseTheme = wordsTheme.theme;
   }
+
 }

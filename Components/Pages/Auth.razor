@@ -1,0 +1,81 @@
+@page "/auth"
+@layout AuthLayout
+@inject PseudoAuth PseudoAuth
+@rendermode InteractiveServer
+
+<PageTitle>Learning app - Authorize</PageTitle>
+
+
+<div class="h-screen flex flex-col gap-10 items-center justify-center">
+  <NavLink href="/" class="hover:text-[#03dac5] duration-300">
+    back to start page
+  </NavLink>
+  <div class="flex bg-zinc-300 h-1/2">
+    <div
+      class="flex flex-col items-center justify-center gap-10 h-full px-12 py-10 w-96 @(isActiveSignin ? "bg-dark-purple" : "")">
+      @if (isActiveSignin)
+      {
+        <h2 class="text-2xl uppercase font-bold">Sign in</h2>
+        <form method="GET" class="flex flex-col gap-5 w-full">
+          <input class="px-1 py-2 text-dark-grey" type="email" placeholder="Write your email">
+          <input class="px-1 py-2 text-dark-grey" type="password" placeholder="Write your password">
+          @* <button type="submit"
+        class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300">Log
+        in</button> *@
+          <NavLink href="/home"
+            class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300 text-center"
+            @onclick="Login">
+            Log in
+          </NavLink>
+        </form>
+      }
+      else
+      {
+        <button class="rounded-xl bg-dark-grey px-10 py-3 text-xl uppercase font-bold hover:scale-110 duration-300"
+          @onclick="ChangeIsActiveSignin">Sign
+          in</button>
+      }
+    </div>
+    <div
+      class="flex flex-col items-center justify-center gap-10 h-full px-12 py-10 w-96 @(!isActiveSignin ? "bg-dark-purple" : "")">
+      @if (isActiveSignin)
+      {
+        <button class="rounded-xl bg-dark-grey px-10 py-3 text-xl uppercase font-bold hover:scale-110 duration-300"
+          @onclick="ChangeIsActiveSignin">Sign
+          up</button>
+      }
+      else
+      {
+        <h2 class="text-2xl uppercase font-bold">Sign up</h2>
+        <form method="POST" class="flex flex-col gap-5 w-full">
+          <input class="px-1 py-2 text-dark-grey" type="email" placeholder="Write your email">
+          <input class="px-1 py-2 text-dark-grey" type="text" placeholder="Write your nickname">
+          <input class="px-1 py-2 text-dark-grey" type="password" placeholder="Write your password">
+          <input class="px-1 py-2 text-dark-grey" type="password" placeholder="Retype your password">
+          @* <button class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300"
+        type="submit">Register</button> *@
+          <NavLink href="/home"
+            class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300 text-center"
+            @onclick="Login">
+            Register
+          </NavLink>
+        </form>
+      }
+    </div>
+  </div>
+</div>
+
+
+@code {
+  private bool isActiveSignin = true;
+
+  private void ChangeIsActiveSignin()
+  {
+    isActiveSignin = !isActiveSignin;
+  }
+
+  private void Login()
+  {
+    PseudoAuth.IsLoggedIn = true;
+  }
+}

@@ -7,6 +7,9 @@ ConfigureServices(builder.Services);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddSingleton<PseudoAuth>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,5 +34,4 @@ static void ConfigureServices(IServiceCollection services)
 {
     services.AddRazorPages();
     services.AddServerSideBlazor();
-    services.AddScoped<IService, Service>();
 }

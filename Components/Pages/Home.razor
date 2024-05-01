@@ -1,9 +1,43 @@
-﻿@page "/"
+﻿@page "/home"
+@layout MainLayout
+
+@inject PseudoAuth PseudoAuth
 
 <PageTitle>Learning app - Home</PageTitle>
 
-<h1>Hello to Learning app</h1>
+<div class="flex flex-col items-center gap-20 w-full">
+  <h1 class="text-3xl font-bold text-center">
+    <span class="text-secondary-pink">Ukrainian to Deutsch</span>: Unlocking German Vocabulary
+  </h1>
 
-<p>
-  Welcome to your lear app.
-</p>
+  <div class="w-[66%] text-xl my-10 flex flex-col gap-5 text-zinc-300 font-light">
+    <p>
+      Are you a Ukrainian newcomer to Germany eager to grasp the language swiftly? Look no further! Our platform
+      offers
+      a
+      personalized approach to learning German words and phrases tailored specifically for Ukrainian speakers.
+    </p>
+
+    <p>
+      Navigate everyday situations with confidence, from ordering at a café to understanding street signs. Our
+      user-friendly interface and engaging content make learning enjoyable and effective.
+    </p>
+
+
+    <p> Join our community of language enthusiasts today and embark on your path to linguistic mastery. Let
+      GermUkrainian be
+      your guide to success in Germany!</p>
+
+  </div>
+
+
+  <div class="w-1/2 flex gap-5 items-center justify-center">
+    <h3 class="text-2xl font-semibold">
+      Start now -> </h3>
+    <NavLink href="/courses"
+      class="px-16 text-center bg-primary-purple py-2 text-xl font-semibold hover:bg-[#ff7597] duration-300">
+      Courses
+    </NavLink>
+  </div>
+
+</div>
