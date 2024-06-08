@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
-     <!-- <PackageReference Include="Syncfusion.Blazor" Version="20.2.0.44" /> -->
   </ItemGroup>
 
 </Project>
