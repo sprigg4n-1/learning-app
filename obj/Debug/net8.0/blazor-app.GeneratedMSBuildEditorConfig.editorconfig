@@ -66,12 +66,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.programming/practice/learning-app/Components/Pages/MyTasks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeVRhc2tzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.programming/practice/learning-app/Components/Pages/MyWordCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeVdvcmRDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.programming/practice/learning-app/Components/Pages/MyWords.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeVdvcmRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.programming/practice/learning-app/Components/Pages/search_bar/SearchBar.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xzZWFyY2hfYmFyXFNlYXJjaEJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.programming/practice/learning-app/Components/Pages/StartPage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFydFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.programming/practice/learning-app/Components/Pages/TaskCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYXNrQ2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.programming/practice/learning-app/Components/Pages/ThemeWords.razor]

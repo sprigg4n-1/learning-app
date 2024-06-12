@@ -1,5 +1,7 @@
 @inject PseudoAuth PseudoAuth
 @layout MainLayout
+@inject NavigationManager navigationManager
+@rendermode InteractiveServer
 
 <div class="w-[30%] h-full">
   <div class="w-full bg-light-purple py-4 px-4 flex flex-col items-center">
@@ -13,14 +15,24 @@
     <span class="text-sm text-zinc-400 mb-5">@type</span>
 
     <p class="text-xl text-primary-teal text-center">@sentence</p>
-
   </div>
   @if (PseudoAuth.IsLoggedIn)
   {
     <div class="w-full">
-      <button class="bg-dark-purple w-full h-full py-3 uppercase hover:bg-[#bb86dc] duration-300">
-        Add to learning words
-      </button>
+      @if (@IsWordSame())
+      {
+        <NavLink href="/my-words"
+          class="bg-white text-black block text-center w-full h-full py-3 uppercase hover:opacity-60 duration-300">
+          Перейти до слів вивчення
+        </NavLink>
+      }
+      else
+      {
+        <button class="bg-dark-purple block text-center w-full h-full py-3 uppercase hover:bg-[#bb86dc] duration-300 cursor-pointer
+  z-index-10" @onclick="AddWord">
+          Додадити до слів вивчення
+        </button>
+      }
     </div>
   }
 
@@ -40,4 +52,52 @@
 
   [Parameter]
   public string type { get; set; }
+  public HttpClient httpClient = new HttpClient();
+
+  private List<MWord> UserWords = new List<MWord>();
+  protected override async Task OnInitializedAsync()
+  {
+    try
+    {
+      User user = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserMail +
+      "/" +
+      PseudoAuth.UserPass);
+      UserWords = user.words_to_learn.ToList();
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"Request error: {e.Message}");
+    }
+
+  }
+
+  private void AddWord()
+  {
+    Console.WriteLine("Added");
+    var body = new
+    {
+      word = word,
+      sentence = sentence,
+      translate = translate,
+      type = type
+    };
+
+    httpClient.PostAsJsonAsync("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserId + "/words", body);
+    navigationManager.NavigateTo(navigationManager.Uri, true);
+  }
+
+  public bool IsWordSame()
+  {
+    foreach (var word_to in UserWords)
+    {
+      if (word_to.word == word)
+      {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+
 }

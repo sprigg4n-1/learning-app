@@ -5,19 +5,19 @@
 @rendermode InteractiveServer
 
 
-<PageTitle>Learning app - Authorize</PageTitle>
+<PageTitle>GermUkrainian - Авторизація</PageTitle>
 
 
 <div class="h-screen flex flex-col gap-10 items-center justify-center">
   <NavLink href="/" class="hover:text-[#03dac5] duration-300">
-    back to start page
+    назад до початку
   </NavLink>
   <div class="flex bg-zinc-300 min-h-1/2 h-fit-content">
     <div
       class="flex flex-col items-center justify-center gap-10 h-full px-12 py-10 w-96 @(isActiveSignin ? "bg-dark-purple" : "")">
       @if (isActiveSignin)
       {
-        <h2 class="text-2xl uppercase font-bold">Sign in</h2>
+        <h2 class="text-2xl uppercase font-bold">Вікно для входу</h2>
 
         <EditForm Model="logu" class="flex flex-col gap-5 w-full" OnValidSubmit=@FormValidSubmit>
           <DataAnnotationsValidator />
@@ -26,29 +26,27 @@
             <p class="text-red-600 text-sm">@errorMessage</p>
           }
           <div class="flex flex-col gap-2 w-full">
-            <label for="email">Email:</label>
+            <label for="email">Е-пошта:</label>
             <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=logu.email id="email"
-              placeholder="Write your email" />
+              placeholder="Напишіть вашу пошту" />
             <ValidationMessage class="text-red-600 text-sm" For="() => logu.email" />
           </div>
           <div class="flex flex-col gap-2 w-full">
-            <label for="password">Password:</label>
+            <label for="password">Пароль:</label>
             <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=logu.password type="password" id="password"
-              placeholder="Write your password" />
+              placeholder="Напишіть пароль" />
             <ValidationMessage class="text-red-600 text-sm" For="() => logu.password" />
           </div>
 
           <button type="submit"
-            class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300">Log
-            in</button>
+            class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300">Вхід</button>
         </EditForm>
 
       }
       else
       {
         <button class="rounded-xl bg-dark-grey px-10 py-3 text-xl uppercase font-bold hover:scale-110 duration-300"
-          @onclick="ChangeIsActiveSignin">Sign
-          in</button>
+          @onclick="ChangeIsActiveSignin">Вхід</button>
       }
     </div>
     <div
@@ -56,35 +54,34 @@
       @if (isActiveSignin)
       {
         <button class="rounded-xl bg-dark-grey px-10 py-3 text-xl uppercase font-bold hover:scale-110 duration-300"
-          @onclick="ChangeIsActiveSignin">Sign
-          up</button>
+          @onclick="ChangeIsActiveSignin">Реєстрація</button>
       }
       else
       {
-        <h2 class="text-2xl uppercase font-bold">Sign up</h2>
+        <h2 class="text-2xl uppercase font-bold">Вікно для реєстрації</h2>
         <EditForm Model="regu" method="POST" OnValidSubmit=@FormRegisterValidSubmit class="flex flex-col gap-5 w-full">
           <DataAnnotationsValidator />
           <div class="flex flex-col gap-2 w-full">
-            <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=regu.email placeholder="Write your email" />
+            <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=regu.email placeholder="Напишіть пошту" />
             <ValidationMessage class="text-red-600 text-sm" For="() => regu.email" />
           </div>
           <div class="flex flex-col gap-2 w-full">
             <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=regu.nickname type="text"
-              placeholder="Write your nickname" />
+              placeholder="Придумайти нік" />
             <ValidationMessage class="text-red-600 text-sm" For="() => regu.nickname" />
           </div>
           <div class="flex flex-col gap-2 w-full">
             <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=regu.password type="password"
-              placeholder="Write your password" />
+              placeholder="Напишіть пароль" />
             <ValidationMessage class="text-red-600 text-sm" For="() => regu.password" />
           </div>
           <div class="flex flex-col gap-2 w-full">
             <InputText class="px-1 py-2 text-dark-grey w-full" @bind-Value=regu.confirmPassword type="password"
-              placeholder="Retype your password" />
+              placeholder="Повторіть пароль" />
             <ValidationMessage class="text-red-600 text-sm" For="() => regu.confirmPassword" />
           </div>
           <button class="py-2 bg-light-purple border-2 border-transparent hover:border-white duration-300"
-            type="submit">Register</button>
+            type="submit">Реєстрація</button>
         </EditForm>
       }
     </div>
@@ -114,7 +111,9 @@
       logu.password);
 
       isValid = true;
-      PseudoAuth.User = uslog;
+      PseudoAuth.UserId = uslog.id;
+      PseudoAuth.UserMail = uslog.email;
+      PseudoAuth.UserPass = uslog.password;
       errorMessage = string.Empty;
       PseudoAuth.IsLoggedIn = true;
       NavigationManager.NavigateTo("/home");
@@ -134,6 +133,8 @@
       nickname = regu.nickname,
       email = regu.email,
       password = regu.password,
+      description = "not yet...",
+      accountPhoto = String.Empty,
       words_to_learn = new List<MWord>(),
       todo_list = new List<UserTask>()
     };
@@ -141,7 +142,9 @@
     await httpClient.PostAsJsonAsync("http://localhost:5210/api/WordsTheme/user", user);
     User usreg = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" + user.email + "/" +
     user.password);
-    PseudoAuth.User = usreg;
+    PseudoAuth.UserId = usreg.id;
+    PseudoAuth.UserMail = usreg.email;
+    PseudoAuth.UserPass = usreg.password;
     PseudoAuth.IsLoggedIn = true;
     NavigationManager.NavigateTo("/home");
   }

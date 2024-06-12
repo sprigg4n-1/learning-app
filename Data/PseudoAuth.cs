@@ -2,6 +2,10 @@
 
 public class PseudoAuth
 {
-  public User User { get; set; }
-  public bool IsLoggedIn { get; set; } = false;
+  public static string UserId { get; set; }
+  public static string UserPass { get; set; }
+  public static string UserMail { get; set; }
+  public static bool IsLoggedIn { get; set; } = false;
+
+
 }

@@ -16,13 +16,17 @@ public class User
 
   public string password { get; set; }
 
-  [BsonElement("words")]
-  [JsonPropertyName("words")]
-  public MWord[] words { get; set; }
+  public string description { get; set; }
 
-  [BsonElement("tasks")]
-  [JsonPropertyName("tasks")]
-  public UserTask[] tasks { get; set; }
+  public string accountPhoto { get; set; }
+
+  [BsonElement("words_to_learn")]
+  [JsonPropertyName("words_to_learn")]
+  public MWord[] words_to_learn { get; set; }
+
+  [BsonElement("todo_list")]
+  [JsonPropertyName("todo_list")]
+  public UserTask[] todo_list { get; set; }
 }
 
 public class UserTask

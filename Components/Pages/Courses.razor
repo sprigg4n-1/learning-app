@@ -1,23 +1,24 @@
 @page "/courses"
 @layout MainLayout
 
-<PageTitle>Learning app - Courses</PageTitle>
+<PageTitle>GermUkrainian - Курси</PageTitle>
 
 <div class="flex flex-col w-full gap-10">
   <div class="flex flex-col gap-2 items-center my-auto">
-    <h1 class="text-3xl font-bold text-zinc-300">Different words from <span class="text-primary-pink">A1</span> to
-      <span class="text-secondary-pink">B1</span> level
+    <h1 class="text-3xl font-bold text-zinc-300">Різні слова від <span class="text-primary-pink">A1</span> до
+      <span class="text-secondary-pink">B1</span> рівня
     </h1>
-    <p class="text-xl font-semibold text-zinc-500">Choose level of words and learn something new</p>
+    <p class="text-xl font-semibold text-zinc-500">Виберіть рівень слів і почніть вчити щось нове</p>
   </div>
 
 
   <div class="flex flex-1 gap-20 items-center justify-center flex-wrap">
-    <LevelCard level="a1" text="Here you will learn the basics of the German words" link="/courses/a1" />
+    <LevelCard level="a1" text="Тут ви навчитеся основам німецьких слів" link="/courses/a1" />
     <LevelCard level="a2"
-      text="Here you can expand your German knowledge from the A1 course. You will learn more words."
+      text="Тут ви можете розширити свої знання німецької мови після курсу A1. Ви вивчите більше слів."
       link="/courses/a2" />
-    <LevelCard level="b1" text="Here you can expand your German knowledge from the A2 course. You will learn more words"
+    <LevelCard level="b1"
+      text="Тут ви можете розширити свої знання німецької мови після курсу A2. Ви вивчите більше слів."
       link="/courses/b1" />
   </div>
 </div>

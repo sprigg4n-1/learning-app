@@ -1,0 +1,25 @@
+<div>
+  <p>@id</p>
+  <p>@task</p>
+  <p>@date</p>
+  <p>@checkedTask</p>
+  <p>@imporatantTask</p>
+</div>
+
+
+@code {
+  [Parameter]
+  public int id { get; set; }
+
+  [Parameter]
+  public string task { get; set; }
+
+  [Parameter]
+  public DateTime date { get; set; }
+
+  [Parameter]
+  public bool checkedTask { get; set; }
+
+  [Parameter]
+  public bool imporatantTask { get; set; }
+}

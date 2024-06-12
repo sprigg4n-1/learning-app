@@ -3,26 +3,26 @@
 @inject PseudoAuth PseudoAuth
 @rendermode InteractiveServer
 
-<PageTitle>Learning app - Start</PageTitle>
+<PageTitle>GermUkrainian - Початок</PageTitle>
 
 <div class="flex flex-col h-screen items-center justify-center gap-20">
 
-  <h1 class="text-3xl">
-    <span class="text-secondary-pink"> Ukrainian to Deutsch</span>: Your Gateway to German Words
+  <h1 class="text-3xl text-center">
+    <span class="text-secondary-pink"> Від Українського до Німецького</span>: Ваш портал до німецьких слів
   </h1>
 
 
   <div class="flex gap-10 items-center">
     <NavLink href="auth" class="bg-secondary-teal px-10 py-2 text-xl font-bold hover:scale-105 duration-300">
-      Log in
+      Вхід
     </NavLink>
     <span class="font-light text-xl">
-      or
+      або
     </span>
     <NavLink href="home"
       class="border-b-2 p-1 text-xl font-bold hover:border-[#03dac5] hover:text-[#03dac5] duration-300"
       @onclick="(() => Login(false))">
-      Try it for free ->
+      Спробуй це без реєстрації ->
     </NavLink>
   </div>
 </div>

@@ -10,18 +10,28 @@
   <ul class="flex gap-5 items-center">
     <li>
       <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/home">
-        Home
+        Головна
       </NavLink>
     </li>
 
     <li>
       <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/courses">
-        Courses
+        Курси
       </NavLink>
     </li>
 
     @if (Login())
     {
+      <li>
+        <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/my-words">
+          Мої слова
+        </NavLink>
+      </li>
+      <li>
+        <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/my-tasks">
+          Мої завдання
+        </NavLink>
+      </li>
       <li>
         <NavLink href="/account">
           <div class="h-10 w-10 rounded-full bg-secondary-teal  hover:bg-sky-800 duration-300">
@@ -33,7 +43,7 @@
     {
       <li>
         <NavLink class="p-1 px-5 bg-primary-pink hover:bg-[#ff0266] duration-300" href="/auth">
-          Log in
+          Вхід
         </NavLink>
       </li>
     }

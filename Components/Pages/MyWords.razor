@@ -1,0 +1,63 @@
+@page "/my-words"
+
+@layout MainLayout
+@inject PseudoAuth PseudoAuth
+@inject NavigationManager navigationManager
+@rendermode InteractiveServer
+
+<PageTitle>GermUkrainian - Мої слова</PageTitle>
+
+<div class="flex flex-col items-center justify-center gap-5">
+  <div class="flex flex-col gap-2 items-center w-full">
+    <h1 class="text-3xl font-semibold text-secondary-pink">Мої слова для вивчення</h1>
+    <p class="text-xl text-zinc-500 mt-3 w-1/2 text-wrap text-center">На цю сторінку ви можете додавати різні слова з
+      тем, які ви пройшли
+    </p>
+  </div>
+
+  <div class="flex-1 flex gap-20 flex-wrap items-center w-full">
+    @if (UserWords.Count > 0)
+    {
+      foreach (var word in UserWords)
+      {
+        <div class="flex bg-neutral-600 gap-10 items-center">
+          <p>@word.word</p>
+          <button @onclick="() => DeleteWord(word.word)" type="button">Delete</button>
+        </div>
+
+      }
+    }
+    else
+    {
+      <p class="w-1/2 text-center mt-5 mx-auto text-2xl">Ви ще не додали жодного слова, ви можете це зробити, якщо
+        перейдете до різних
+        <NavLink class="text-bold text-primary-teal underline hover:opacity-60 duration-300" href="/courses">
+          курсів</NavLink>
+        та оберете тему, а там слова...
+      </p>
+    }
+  </div>
+
+
+</div>
+
+@code {
+  private List<MWord> UserWords = new List<MWord>();
+  public HttpClient httpClient = new HttpClient();
+
+  public async void DeleteWord(String word)
+  {
+    Console.WriteLine(word);
+    await httpClient.DeleteAsync("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserId + "/words/"
+    + word);
+    navigationManager.NavigateTo(navigationManager.Uri, true);
+  }
+
+  protected override async Task OnInitializedAsync()
+  {
+    User user = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserMail +
+    "/" +
+    PseudoAuth.UserPass);
+    UserWords = user.words_to_learn.ToList();
+  }
+}
