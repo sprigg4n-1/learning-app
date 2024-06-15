@@ -1,29 +1,83 @@
-@rendermode InteractiveServer
-
-<div class="flex flex-1 items-center relative">
+<div class="hidden flex-1 items-center relative xl:flex">
   <input class="bg-zinc-300 pl-2 pr-6 py-1 outline-none w-full text-dark-grey" type="text"
-    placeholder="Напишіть слово яку хочете знайти..." @bind="searched" @bind:event="oninput">
-  <button class="h-fit bg-zinc-600 p-1 rounded-full absolute -right-4 ">
-    <svg class="w-6 h-6 stroke-slate-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-        stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+    placeholder="Напишіть слово яке хочете знайти..." @bind="searched" @bind:event="oninput" @onkeypress="@Enter">
+  <button @onclick="OnSearchClicked"
+    class="h-fit bg-zinc-600 p-1 rounded-full absolute -right-4 hover:bg-zinc-500 duration-300">
+    @if (filteredWords.Count() == 0)
+    {
+      <svg class="w-6 h-6 stroke-slate-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+          stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    }
+    else
+    {
+      <svg class="w-6 h-6 stroke-slate-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="" stroke-width="1.5" stroke-linecap="round" />
+        <path
+          d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+          stroke="" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    }
+
   </button>
 
-  @if (searched != "")
-  {
-    <div class="absolute top-9 bg-white text-black w-[330px] overflow-hidden">
-      <p class="py-2 px-3">
-        @searched
-      </p>
-    </div>
-  }
+  <div class="absolute top-9 flex flex-col gap-2 bg-white text-black w-[330px] overflow-hidden">
+    @foreach (var word in filteredWords)
+    {
+      <div class="px-2 py-1 bg-neutral-300 flex flex-col items-center">
+        <p class="font-xl font-bold text-dark-purple">@word.word</p>
+        <p class="font-lg text-secondary-pink font-medium">@word.translate</p>
+      </div>
+    }
+  </div>
 
 </div>
 
-
-
 @code {
   private string searched { get; set; } = "";
+
+  private List<MWord> filteredWords = new List<MWord>();
+
+  private List<MWord> allWords = new List<MWord>();
+
+  public HttpClient httpClient = new HttpClient();
+
+  private Action DocumentClickHandler;
+
+  protected override async Task OnInitializedAsync()
+  {
+    allWords = await httpClient.GetFromJsonAsync<List<MWord>>("http://localhost:5210/api/WordsTheme/words");
+
+  }
+
+  private void OnSearchClicked()
+  {
+    if (searched == "")
+    {
+      CleanWords();
+    }
+    else
+    {
+      filteredWords = allWords.Where(word => word.word.Contains(searched,
+      StringComparison.OrdinalIgnoreCase)).Take(10).ToList();
+      searched = "";
+    }
+  }
+
+  private void CleanWords()
+  {
+    filteredWords.Clear();
+  }
+
+  public void Enter(KeyboardEventArgs e)
+  {
+    if (e.Code == "Enter" || e.Code == "NumpadEnter")
+    {
+      filteredWords = allWords.Where(word => word.word.Contains(searched,
+      StringComparison.OrdinalIgnoreCase)).Take(10).ToList();
+      searched = "";
+    }
+  }
 }

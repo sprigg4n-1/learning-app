@@ -1,13 +1,13 @@
 @inject PseudoAuth PseudoAuth
 @rendermode InteractiveServer
 
-<header class="bg-neutral-800 px-10 py-4 flex gap-10 items-center">
+<header class="bg-neutral-800 px-10 py-4 flex justify-between items-center xl:gap-10">
 
-  <h2 class="uppercase text-3xl font-bold text-primary-purple">Germ-Ukrainian</h2>
+  <h2 class="uppercase text-xl font-bold text-primary-purple sm:text-3xl">Germ-Ukrainian</h2>
 
   <SearchBar />
 
-  <ul class="flex gap-5 items-center">
+  <ul class="hidden xl:flex gap-5 items-center">
     <li>
       <NavLink class="p-1 px-5 bg-secondary-teal hover:bg-sky-800 duration-300" href="/home">
         Головна
@@ -49,6 +49,12 @@
     }
 
   </ul>
+
+  <div class="block relative xl:hidden h-8 w-8">
+    <span class="absolute w-full h-1 bg-white"></span>
+    <span class="absolute w-full h-1 bg-white top-1/2 -translate-y-1/2"></span>
+    <span class="absolute w-full h-1 bg-white bottom-0"></span>
+  </div>
 </header>
 
 @code {

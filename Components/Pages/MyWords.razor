@@ -7,24 +7,22 @@
 
 <PageTitle>GermUkrainian - Мої слова</PageTitle>
 
-<div class="flex flex-col items-center justify-center gap-5">
-  <div class="flex flex-col gap-2 items-center w-full">
+<div class="flex flex-col items-center justify-center gap-10">
+  <div class="flex flex-col gap-2 items-center w-full text-center">
     <h1 class="text-3xl font-semibold text-secondary-pink">Мої слова для вивчення</h1>
     <p class="text-xl text-zinc-500 mt-3 w-1/2 text-wrap text-center">На цю сторінку ви можете додавати різні слова з
       тем, які ви пройшли
     </p>
   </div>
 
-  <div class="flex-1 flex gap-20 flex-wrap items-center w-full">
+  <div class="flex-1 flex gap-5 flex-wrap items-center justify-between w-full">
     @if (UserWords.Count > 0)
     {
       foreach (var word in UserWords)
       {
-        <div class="flex bg-neutral-600 gap-10 items-center">
-          <p>@word.word</p>
-          <button @onclick="() => DeleteWord(word.word)" type="button">Delete</button>
-        </div>
 
+        <MyWordCard word="@word.word" sentence="@word.sentence" translate="@word.translate" type="@word.type"
+          OnClick="DeleteWord" />
       }
     }
     else
