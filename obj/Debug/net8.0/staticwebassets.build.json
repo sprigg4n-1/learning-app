@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mbddYKDHb+7vjiAs0GDemd6y8g1yeAn3+59jTM+fj/M=",
+  "Hash": "CgEbicvcuJyWCmpsMIKH9Jrk5IZz6F/qax0T8pFvZeY=",
   "Source": "blazor-app",
   "BasePath": "_content/blazor-app",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\icons\\arrow-right-336-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\close-circle-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/close-circle-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\close-circle-svgrepo-com.svg"
     },
     {
       "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg",

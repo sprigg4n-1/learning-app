@@ -1,10 +1,167 @@
 @page "/account"
 @inject PseudoAuth PseudoAuth
 @layout MainLayout
+@inject NavigationManager navigationManager
+@rendermode InteractiveServer
 
 <PageTitle>GermUkrainian - Акаунт</PageTitle>
 
-<h2>Account</h2>
+<div class="flex flex-col gap-20">
+  <h1 class="text-center text-3xl font-bold">Тут ви знайдете <span class="text-secondary-pink">налаштування</span>
+    вашого профілю</h1>
 
-<p>Here is your acc</p>
-<p>Your nickname</p>
+  <div class="mx-auto w-full max-w-[1320px] flex justify-between">
+    <div class="flex flex-col gap-10">
+      <img src="http://placehold.it/350x350" alt="" class="w-[350px] h-[350px]">
+      <div class="text-center">
+        <label
+          class="cursor-pointer py-2 px-10 border-2 border-white text-center hover:bg-white hover:text-black duration-300"
+          for="selected-image">Оберіть
+          фото</label>
+        <input class="hidden" type="file" id="selected-image" accept="image/*">
+      </div>
+    </div>
+    <div class="flex flex-col gap-10 w-1/2">
+      <h2 class="text-2xl text-white">Ваша особиста інформація</h2>
+      @if (isEdited)
+      {
+        <EditForm Model="@userChange" OnValidSubmit="@OnValidChanges" class="flex flex-col gap-5 text-secondary-pink">
+          <DataAnnotationsValidator />
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center gap-10">
+              <span class="w-[100px] text-white font-semibold">Nickname:</span>
+              <InputText @bind-Value="userChange.nickname" class="bg-transparent px-2 border-b-2 border-white w-full" />
+            </div>
+
+            <ValidationMessage class="text-red-600 text-sm" For="() => userChange.nickname" />
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center gap-10">
+              <span class="w-[100px] text-white font-semibold">Email:</span>
+              <InputText @bind-Value="userChange.email" class="bg-transparent px-2 border-b-2 border-white w-full" />
+            </div>
+            <ValidationMessage class="text-red-600 text-sm" For="() => userChange.email" />
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center gap-10">
+              <span class="w-[100px] text-white font-semibold">Password:</span>
+              <InputText @bind-Value="userChange.password" class="bg-transparent px-2 border-b-2 border-white w-full" />
+            </div>
+            <ValidationMessage class="text-red-600 text-sm" For="() => userChange.password" />
+          </div>
+        </EditForm>
+      }
+      else
+      {
+        <ul class="flex flex-col gap-5 font-medium text-primary-pink">
+          <li class="flex items-center gap-10">
+            <span class="w-[100px] text-zinc-200 font-light">Nickname:</span>
+            <span>@user.nickname</span>
+          </li>
+          <li class="flex items-center gap-10 ">
+            <span class="w-[100px] text-zinc-200 font-light">Email:</span>
+            <span>@user.email</span>
+          </li>
+          <li class="flex items-center gap-10">
+            <span class="w-[100px] text-zinc-200 font-light">Password:</span>
+            <span>@user.password</span>
+          </li>
+        </ul>
+      }
+
+      <div class="flex items-center justify-between">
+        @if (isEdited)
+        {
+          <button class="block w-1/3 py-2 duration-300 bg-primary-teal hover:bg-[#018786]" @onclick="SubmitChanges">
+            Підтвердити
+          </button>
+          <button @onclick="CancelEdit"
+            class="block w-1/3 py-2 bg-primary-pink hover:bg-[#ff0266] duration-300">Відмінити</button>
+        }
+        else
+        {
+          <button class="block w-1/3 py-2 duration-300 bg-primary-pink hover:bg-[#ff0266]" @onclick="ChangeOnEditMode">
+            Змінити
+          </button>
+        }
+      </div>
+
+      <div class="border-t-2 border-white py-5">
+        <div class="flex gap-10 items-center">
+          <p class="text-zinc-200 text-lg">Вийти з акаунта -></p>
+          <NavLink href="/" @onclick="ExitFromAcc" class="px-5 py-1 bg-secondary-pink hover:opacity-70 duration-300">
+            Вихід</NavLink>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@code {
+  private bool isEdited = false;
+
+  private User user = new User();
+  private ChangeUser userChange = new ChangeUser();
+
+  public HttpClient httpClient = new HttpClient();
+
+  protected override async Task OnInitializedAsync()
+  {
+    user = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" +
+    PseudoAuth.UserMail +
+    "/" +
+    PseudoAuth.UserPass);
+    userChange.email = user.email;
+    userChange.password = user.password;
+    userChange.nickname = user.nickname;
+  }
+
+  public void ChangeOnEditMode()
+  {
+    isEdited = !isEdited;
+  }
+
+  public void CancelEdit()
+  {
+    isEdited = false;
+  }
+
+  public void ExitFromAcc()
+  {
+    PseudoAuth.Reset();
+  }
+
+  public async Task OnValidChanges()
+  {
+    try
+    {
+      var body = new
+      {
+        id = user.id,
+        nickname = userChange.nickname,
+        email = userChange.email,
+        password = userChange.password,
+        description = "not yet...",
+        accountPhoto = String.Empty,
+        words_to_learn = user.words_to_learn,
+        todo_list = user.todo_list
+      };
+      PseudoAuth.UserPass = userChange.password;
+      PseudoAuth.UserMail = userChange.email;
+      isEdited = false;
+      await httpClient.PutAsJsonAsync("http://localhost:5210/api/WordsTheme/user/" + user.id, body);
+
+    }
+    catch (HttpRequestException e)
+    {
+      Console.WriteLine($"Request error: {e.Message}");
+    }
+
+  }
+
+  public void SubmitChanges()
+  {
+    OnValidChanges();
+    navigationManager.NavigateTo(navigationManager.Uri, true);
+  }
+}
