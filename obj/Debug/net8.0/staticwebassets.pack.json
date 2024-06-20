@@ -13,12 +13,28 @@
       "PackagePath": "staticwebassets\\images\\icons\\arrow-right-336-svgrepo-com.svg"
     },
     {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\bin-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\bin-svgrepo-com.svg"
+    },
+    {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\checked-tick-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\checked-tick-svgrepo-com.svg"
+    },
+    {
       "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\close-circle-svgrepo-com.svg",
       "PackagePath": "staticwebassets\\images\\icons\\close-circle-svgrepo-com.svg"
     },
     {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\edit-2-svgrepo-com.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\edit-2-svgrepo-com.svg"
+    },
+    {
       "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg",
       "PackagePath": "staticwebassets\\images\\icons\\search-alt-2-svgrepo-com.svg"
+    },
+    {
+      "Id": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\star.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\star.svg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.blazor-app.Microsoft.AspNetCore.StaticWebAssets.props",

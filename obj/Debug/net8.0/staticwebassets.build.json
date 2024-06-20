@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CgEbicvcuJyWCmpsMIKH9Jrk5IZz6F/qax0T8pFvZeY=",
+  "Hash": "vp//9wmpM2RQIOSFdsu796aJHwbovNc1WJa0StEL4aA=",
   "Source": "blazor-app",
   "BasePath": "_content/blazor-app",
   "Mode": "Default",
@@ -74,6 +74,44 @@
       "OriginalItemSpec": "wwwroot\\images\\icons\\arrow-right-336-svgrepo-com.svg"
     },
     {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\bin-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/bin-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\bin-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\checked-tick-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/checked-tick-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\checked-tick-svgrepo-com.svg"
+    },
+    {
       "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\close-circle-svgrepo-com.svg",
       "SourceId": "blazor-app",
       "SourceType": "Discovered",
@@ -93,6 +131,25 @@
       "OriginalItemSpec": "wwwroot\\images\\icons\\close-circle-svgrepo-com.svg"
     },
     {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\edit-2-svgrepo-com.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/edit-2-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\edit-2-svgrepo-com.svg"
+    },
+    {
       "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg",
       "SourceId": "blazor-app",
       "SourceType": "Discovered",
@@ -110,6 +167,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\icons\\search-alt-2-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\.programming\\practice\\learning-app\\wwwroot\\images\\icons\\star.svg",
+      "SourceId": "blazor-app",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.programming\\practice\\learning-app\\wwwroot\\",
+      "BasePath": "_content/blazor-app",
+      "RelativePath": "images/icons/star.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\star.svg"
     }
   ]
 }

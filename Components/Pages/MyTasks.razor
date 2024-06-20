@@ -2,13 +2,15 @@
 
 @layout MainLayout
 @inject PseudoAuth PseudoAuth
+@inject NavigationManager navigationManager
+@rendermode InteractiveServer
 
 <PageTitle>GermUkrainian - Мої завдання</PageTitle>
 
 <div class="flex flex-col items-center justify-center gap-5">
   <div class="flex flex-col gap-2 items-center w-full text-center">
     <h1 class="text-3xl font-semibold text-primary-pink">Мої завдання</h1>
-    <p class="text-xl text-zinc-500 mt-3 w-1/2 text-wrap text-center">На цій сторінці ви можете додавати, видаляти та
+    <p class="text-xl text-zinc-500 mt-3 w-1/2 text-wrap text-center">На цій сторінці ви можете додавати та
       виконувати
       різні
       завдання,
@@ -16,20 +18,46 @@
       запланували зробити</p>
   </div>
 
+  <EditForm Model="addTask" class="flex flex-col gap-2 w-full" OnValidSubmit="@OnSubmitTask">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="flex w-full">
+      <InputText @bind-Value="addTask.task" placeholder="Напишіть своє завдання"
+        class="py-2 px-1 text-black w-full flex-1" />
+      @* <InputDate @bind-Value="addTask.date" class="text-black font-semibold px-2 bg-secondary-teal" /> *@
 
-  <div class="flex-1 w-full">
-    @if (UserWords.Count > 0)
+      <div>
+        <button type="button" class="h-full w-12 bg-neutral-800 px-1" @onclick="ToggleImportant">
+          <svg class="h-full w-full @(addTask.important ? "fill-[#ff7597]" : "fill-none")" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+              stroke="#ff7597" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+
+      <button class="px-10 bg-primary-blue hover:text-[#3700b3] hover:bg-white duration-300"
+        type="submit">Додати</button>
+    </div>
+
+  </EditForm>
+
+
+  <div class="flex-1 w-full flex flex-col gap-3">
+    @if (UserTasks.Count > 0)
     {
       @foreach (var task in UserTasks)
       {
-        <TaskCard id="@task.id" task="@task.task" date="@task.date" checkedTask="@task.done"
-          imporatantTask="@task.important" />
+        <TaskCard userId="@PseudoAuth.UserId" id="@task.taskId" task="@task.task" date="@task.date" checkedTask="@task.done"
+          imporatantTask="@task.important" OnClick="DeleteTask" />
       }
     }
     else
     {
       <p class="w-1/2 text-center mt-5 mx-auto text-2xl">Зараз ви не маєте жодного завдання, додайте щось і тут зможете
-        бачити їх...</p>
+        побачити їх...</p>
     }
   </div>
 
@@ -37,18 +65,54 @@
 
 
 @code {
-  private bool isBigger = true;
+  private AddTask addTask = new AddTask();
 
-  private List<MWord> UserWords = new List<MWord>();
   private List<UserTask> UserTasks = new List<UserTask>();
 
   public HttpClient httpClient = new HttpClient();
 
   protected override async Task OnInitializedAsync()
   {
-    User user = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserMail +
-    "/" +
-    PseudoAuth.UserPass);
-    UserTasks = user.todo_list.ToList();
+    try
+    {
+      User user = await httpClient.GetFromJsonAsync<User>("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserMail +
+      "/" +
+      PseudoAuth.UserPass);
+      UserTasks = user.todo_list.ToList();
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"Request error: {e.Message}");
+    }
+  }
+
+  private void ToggleImportant()
+  {
+    addTask.important = !addTask.important;
+  }
+
+  private void OnSubmitTask()
+  {
+    var body = new
+    {
+      taskId = Guid.NewGuid().ToString(),
+      task = addTask.task,
+      important = addTask.important,
+      done = addTask.done,
+      date = addTask.date
+    };
+
+    httpClient.PostAsJsonAsync("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserId + "/tasks", body);
+
+    addTask = new AddTask();
+
+    navigationManager.NavigateTo(navigationManager.Uri, true);
+  }
+
+  public async void DeleteTask(String id)
+  {
+    await httpClient.DeleteAsync("http://localhost:5210/api/WordsTheme/user/" + PseudoAuth.UserId + "/tasks/"
+    + id);
+    navigationManager.NavigateTo(navigationManager.Uri, true);
   }
 }
