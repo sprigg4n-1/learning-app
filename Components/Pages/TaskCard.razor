@@ -22,7 +22,13 @@
 
   @if (!checkedTask)
   {
-    <p class="px-2">@date</p>
+    <p class="px-5 bg-neutral-800 h-14 flex items-center justify-center gap-1">
+      <span>@date.Day</span>
+      <span>-</span>
+      <span>@date.Month</span>
+      <span>-</span>
+      <span>@date.Year</span>
+    </p>
     <button type="button" class="h-14 w-14 bg-neutral-900 px-2" @onclick="EditTaskOnImportant">
       <svg class="h-full w-full hover:fill-[#ff7597] @(imporatantTask ? "fill-[#ff7597]" : "fill-none")"
         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
